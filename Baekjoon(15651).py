@@ -1,15 +1,17 @@
 def N_M3(i, N, M):
 
     if i == M:
+        for j in range(M):
+            print(arr[j], end=" ")
         print()
         return
 
     for j in range(N):
-        print(j+1, end=" ")
+        arr[i] = j+1
         N_M3(i+1, N, M)
 
 N, M = list(map(int, input().split()))
-x = [0]*N
 arr = [0]*M
 N_M3(0, N, M)
+
 
