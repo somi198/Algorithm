@@ -1,15 +1,11 @@
-def dp(n):
-    if n == 1: return 0
-    if memo[n] != 0: return memo[n]
-    
-    memo[n] = dp(n-1)+1 
-    if n%3 == 0:
-        memo[n] = min(memo[n], dp(n//3)+1)
-    if n%2 == 0:
-        memo[n] = min(memo[n], dp(n//2)+1) 
-    
-    return memo[n]
-
 N = int(input())
-memo = [0]*(N+1)
-print(dp(N))
+DP = [0]*(N+1)
+
+for i in range(1, N+1):
+    DP[i] = DP[i-1]+1
+    if i%3 == 0:
+        DP[i] = min(DP[i], DP[i//3]+1)
+    if i%2 == 0:
+        DP[i] = min(DP[i], DP[i//2]+1)
+
+print(DP[N]-1)
