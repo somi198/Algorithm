@@ -19,7 +19,7 @@ def solution(n, info):
         if diff > 0:
             candidate = possible.copy()
             
-            if n > 0: candidate[-1] = n
+            if n > 0: candidate[-1] += n
             if max_diff < diff:
                 max_diff = diff
                 answer = candidate
