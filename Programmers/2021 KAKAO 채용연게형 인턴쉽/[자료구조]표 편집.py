@@ -1,3 +1,4 @@
+# 정확도 o, 효율성 x / O(len(cmd)*n^2)
 def solution(n, k, cmd):
     answer = ''
     remove = []
@@ -23,7 +24,6 @@ def solution(n, k, cmd):
             remove.append(k)
             table[k] = False
             
-            
             while k+1 < n:
                 k += 1
                 if table[k]: break
@@ -44,11 +44,11 @@ def solution(n, k, cmd):
     
     return answer
 
-
+# 정확성 o, 효율성 o (linked list 구현)
 def solution2(n, k, cmd):
     answer = ''
     remove = []
-    table = {}
+    table = {}  # n:[prev, next]
     info = [True]*n
     
     # init
@@ -56,8 +56,6 @@ def solution2(n, k, cmd):
         table[i] = [i-1, i+1]
     
     for i in range(len(cmd)):
-        #print(cmd)
-        #print(info)
         c = cmd[i].split()
         
         if c[0] == 'U':
@@ -88,8 +86,3 @@ def solution2(n, k, cmd):
         else: answer += 'X'
             
     return answer
-
-n = 8
-k = 2
-cmd = ["D 2","C","U 3","C","D 4","C","U 2","Z","Z"]
-print(solution2(n, k, cmd))
